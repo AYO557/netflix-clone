@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "password": "password123",
+      "id": "d320"
+    },
+    {
+      "id": "3ce9",
+      "name": "Ayo",
+      "email": "olasupoayomide557@gmail.com",
+      "password": "abcABC123,"
+    }
+  ],
+  "channels": [],
+  "messages": []
+}

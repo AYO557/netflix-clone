@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import TextField from "../../../components/ui/TextField";
 import SubmitBtn from "../../../components/ui/button/SubmitBtn";
 import SwitchForm from "./SwitchForm";
-import { handleFormInput } from "../lib/utils";
+import { handleCreateUser, handleFormInput, validateForm } from "../lib/utils";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -11,7 +12,6 @@ function SignupForm() {
   const [conPassword, setConPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     setIsDisabled(true);
@@ -30,11 +30,12 @@ function SignupForm() {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsDisabled(true);
-    setError("");
-    setIsLoading(true);
 
     if (password !== conPassword) {
-      setError("Passwords do not match");
+      toast.error("Passwords do not match");
+
+      clearLoaders();
+      return;
     }
 
     if (password === conPassword) {
@@ -42,9 +43,35 @@ function SignupForm() {
       setIsDisabled(true);
     }
 
+    createAccount(name, email, password);
+
+    clearLoaders();
+  };
+
+  const createAccount = (name: string, email: string, password: string) => {
+    const isFormValid = validateForm({
+      name,
+      email,
+      password,
+      confirmPassword: conPassword,
+    });
+
+    if (isFormValid) {
+      const payload = {
+        name,
+        email,
+        password,
+      };
+
+      handleCreateUser(payload);
+    }
+  };
+
+  const clearLoaders = () => {
     setTimeout(() => {
       setIsLoading(false);
       setIsDisabled(false);
+      toast.dismiss();
     }, 2000);
   };
 
@@ -88,12 +115,14 @@ function SignupForm() {
       />
 
       <SubmitBtn
-        label="Sign Up"
+        label={isLoading ? "Creating Account..." : "Sign Up"}
         isDisabled={isDisabled}
         isLoading={isLoading}
       />
 
       <SwitchForm path="login" />
+
+      <Toaster position="top-center" reverseOrder={false} />
     </form>
   );
 }
