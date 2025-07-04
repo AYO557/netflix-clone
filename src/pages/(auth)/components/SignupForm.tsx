@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import TextField from "../../../components/ui/TextField";
 import SubmitBtn from "../../../components/ui/button/SubmitBtn";
 import SwitchForm from "./SwitchForm";
-import { handleCreateUser, handleFormInput, validateForm } from "../lib/utils";
-import toast, { Toaster } from "react-hot-toast";
+import { clearLoaders, handleFormInput } from "../lib/utils";
+import { Toaster } from "react-hot-toast";
+import { createAccount } from "../services";
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -31,48 +32,9 @@ function SignupForm() {
     e.preventDefault();
     setIsDisabled(true);
 
-    if (password !== conPassword) {
-      toast.error("Passwords do not match");
+    createAccount(email, password, name, conPassword);
 
-      clearLoaders();
-      return;
-    }
-
-    if (password === conPassword) {
-      setIsLoading(true);
-      setIsDisabled(true);
-    }
-
-    createAccount(name, email, password);
-
-    clearLoaders();
-  };
-
-  const createAccount = (name: string, email: string, password: string) => {
-    const isFormValid = validateForm({
-      name,
-      email,
-      password,
-      confirmPassword: conPassword,
-    });
-
-    if (isFormValid) {
-      const payload = {
-        name,
-        email,
-        password,
-      };
-
-      handleCreateUser(payload);
-    }
-  };
-
-  const clearLoaders = () => {
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsDisabled(false);
-      toast.dismiss();
-    }, 2000);
+    clearLoaders(setIsLoading, setIsDisabled);
   };
 
   return (

@@ -1,40 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import TextField from "../../../components/ui/TextField";
 import SubmitBtn from "../../../components/ui/button/SubmitBtn";
 import SwitchForm from "./SwitchForm";
-import { handleFormInput } from "../lib/utils";
+import { Toaster } from "react-hot-toast";
+import useLoginForm from "../hooks/useLoginForm";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [error, setError] = useState("");
+  const {
+    email,
+    password,
+    handleInput,
+    handleFormSubmit,
+    isDisabled,
+    setIsDisabled,
+    isLoading,
+  } = useLoginForm();
 
-  // toggling button disability
   useEffect(() => {
     setIsDisabled(true);
     if (email !== "" && password !== "") {
       setIsDisabled(false);
     }
-  }, [email, password]);
-
-  const handleInput = handleFormInput({
-    email: setEmail,
-    password: setPassword,
-  });
-
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsDisabled(true);
-    setIsLoading(true);
-    setError("");
-
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsDisabled(false);
-    }, 2000);
-  };
+  }, [email, password, setIsDisabled]);
 
   return (
     <form
@@ -66,6 +53,8 @@ function LoginForm() {
       />
 
       <SwitchForm path="signup" />
+
+      <Toaster position="top-center" reverseOrder={false} />
     </form>
   );
 }

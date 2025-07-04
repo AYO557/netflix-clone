@@ -1,15 +1,8 @@
-import axios from "axios";
 import type { Dispatch, SetStateAction } from "react";
 import toast from "react-hot-toast";
+import type { DataType } from "./type";
 
 interface FormInputHandlers {
-  name?: string;
-  email: string;
-  password: string;
-  confirmPassword?: string;
-}
-
-interface DataType {
   name?: string;
   email: string;
   password: string;
@@ -28,7 +21,7 @@ const handleFormInput =
     }
   };
 
-function validateForm(data: DataType) {
+function validateSignupForm(data: DataType) {
   // Run all validations - early return on first failure
   const validations = [
     () => checkAllFields(data),
@@ -44,6 +37,12 @@ function validateForm(data: DataType) {
   }
 
   return true;
+}
+
+function validateLoginForm(data: DataType) {
+  const isAllFields = checkAllFields(data);
+
+  return isAllFields;
 }
 
 function checkAllFields(data: DataType) {
@@ -84,38 +83,15 @@ function validateName(data: DataType) {
   return true;
 }
 
-const handleCreateUser = async (payload: DataType) => {
-  const { email } = payload;
-  try {
-    const response = await axios({
-      method: "get",
-      url: "http://localhost:8000/users",
-    });
-
-    const users = response.data;
-
-    const existUser = users.find(
-      (user: { email: string; password: string; name: string }) =>
-        user.email === email
-    );
-
-    if (existUser) {
-      toast.error("User already exists");
-      return;
-    }
-
-    const res = await axios({
-      method: "post",
-      url: "http://localhost:8000/users",
-      data: payload,
-    });
-
-    if (res.status === 201) {
-      toast.success("Account created successfully");
-    }
-  } catch (error) {
-    console.error(error);
-  }
+const clearLoaders = (
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setTimeout(() => {
+    setIsLoading(false);
+    setIsDisabled(false);
+    toast.dismiss();
+  }, 2000);
 };
 
-export { handleFormInput, validateForm, handleCreateUser };
+export { handleFormInput, validateSignupForm, validateLoginForm, clearLoaders };

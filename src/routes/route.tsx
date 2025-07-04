@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import AuthLayout from "../pages/(auth)/layout";
 import SignupPage from "../pages/(auth)/signup";
 import LoginPage from "../pages/(auth)/login";
+import HomePage from "../pages/(main)/home";
+import ProtectedRoute from "./protected-route";
 
 export default function Router() {
   const routes = createBrowserRouter([
@@ -21,7 +23,7 @@ export default function Router() {
     },
     {
       path: "/",
-      element: <h1>Home page</h1>,
+      element: <ProtectedRoute children={<HomePage />} />,
     },
   ]);
 
