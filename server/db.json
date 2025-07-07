@@ -23,6 +23,18 @@
       "name": "famous",
       "email": "famous@gmail.com",
       "password": "abcABC123,"
+    },
+    {
+      "id": "331e",
+      "name": "Samuel",
+      "email": "samuel@gmail.com",
+      "password": "abcABC123,"
+    },
+    {
+      "id": "cd64",
+      "name": "Divine",
+      "email": "divine@gmail.com",
+      "password": "abcABC123,"
     }
   ],
   "channels": [],

@@ -23,7 +23,7 @@ const createAccount = (
       password,
     };
 
-    handleCreateUser(payload);
+    return handleCreateUser(payload);
   }
 };
 
@@ -108,11 +108,10 @@ const handleCreateUser = async (payload: DataType) => {
     });
 
     if (res.status === 201) {
-      JSON.stringify(
-        localStorage.setItem("user-data", JSON.stringify(payload))
-      );
-      window.location.href = "/";
-      return;
+      return {
+        name: payload.name,
+        email: payload.email,
+      };
     }
   } catch (error) {
     console.error(error);

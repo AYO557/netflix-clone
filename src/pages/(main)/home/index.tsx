@@ -1,17 +1,23 @@
-import Netflix from "../../../components/ui/netflix";
 import useUser from "../../../hooks/useUser";
+import NavMenu from "../../../components/composites/nav-menu";
+import Aside from "../../../components/composites/aside";
+import Home from "./home";
 
 export default function HomePage() {
   const { getUser } = useUser();
   const { name } = getUser();
 
   return (
-    <main className="h-screen bg-black text-2xl text-white justify-center items-center flex">
-      <div className="flex flex-col gap-5">
-        <Netflix />
+    <div className="h-screen bg-black text-white  grid grid-cols-11">
+      <nav className="col-span-2 h-full border border-grey">
+        <NavMenu />
+      </nav>
 
-        <h1 className="text-9xl font-bold text-center">Welcome back {name}</h1>
-      </div>
-    </main>
+      <main className="col-span-6 h-full border border-gray-600 flex flex-col gap-5 p-10  overflow-y-auto">
+        <Home name={name} />
+      </main>
+
+      <Aside name={name} />
+    </div>
   );
 }

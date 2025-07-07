@@ -1,41 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import TextField from "../../../components/ui/TextField";
 import SubmitBtn from "../../../components/ui/button/SubmitBtn";
 import SwitchForm from "./SwitchForm";
-import { clearLoaders, handleFormInput } from "../lib/utils";
 import { Toaster } from "react-hot-toast";
-import { createAccount } from "../services";
+import useSignupForm from "../hooks/useSignupForm";
 
 function SignupForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [conPassword, setConPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
+  const {
+    name,
+    email,
+    password,
+    conPassword,
+    handleSignupInput,
+    handleFormSubmit,
+    isDisabled,
+    setIsDisabled,
+    isLoading,
+  } = useSignupForm();
 
   useEffect(() => {
     setIsDisabled(true);
     if (name !== "" && email !== "" && password !== "" && conPassword !== "") {
       setIsDisabled(false);
     }
-  }, [name, email, password, conPassword]);
-
-  const handleInput = handleFormInput({
-    name: setName,
-    email: setEmail,
-    password: setPassword,
-    confirmPassword: setConPassword,
-  });
-
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsDisabled(true);
-
-    createAccount(email, password, name, conPassword);
-
-    clearLoaders(setIsLoading, setIsDisabled);
-  };
+  }, [name, email, password, conPassword, setIsDisabled]);
 
   return (
     <form
@@ -49,7 +37,7 @@ function SignupForm() {
         name="name"
         type="text"
         value={name}
-        onChange={handleInput}
+        onChange={handleSignupInput}
       />
 
       <TextField
@@ -57,7 +45,7 @@ function SignupForm() {
         name="email"
         type="email"
         value={email}
-        onChange={handleInput}
+        onChange={handleSignupInput}
       />
 
       <TextField
@@ -65,7 +53,7 @@ function SignupForm() {
         name="password"
         type="password"
         value={password}
-        onChange={handleInput}
+        onChange={handleSignupInput}
       />
 
       <TextField
@@ -73,7 +61,7 @@ function SignupForm() {
         name="confirmPassword"
         type="password"
         value={conPassword}
-        onChange={handleInput}
+        onChange={handleSignupInput}
       />
 
       <SubmitBtn
