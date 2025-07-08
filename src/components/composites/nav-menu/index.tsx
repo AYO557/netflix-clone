@@ -1,6 +1,8 @@
+import { NavLink } from "react-router";
 import Netflix from "../../ui/netflix";
 import { BellPlus, Film, House, List, Monitor } from "lucide-react";
 
+//  bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400
 function NavMenu() {
   return (
     <div className="h-full flex flex-col py-5 gap-20">
@@ -13,66 +15,147 @@ function NavMenu() {
           <li className="flex justify-center text-sm">
             <div className="flex items-center gap-4 min-w-[50%]">MENU</div>
           </li>
-          <li className="font-bold w-full bg-[rgba(236,147,147,0.2)] text-red-500 py-3 border-l-4 border-red-400 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          <NavLink
+            to={"/"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <House />
               <span>HOME</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center hover:bg-[rgba(236,147,147,0.2)] cursor-pointer">
+          </NavLink>
+          <NavLink
+            to={"/tv-shows"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <Monitor />
               <span>TV SHOWS</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/movies"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <Film />
               <span>MOVIES</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/new-and-popular"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <BellPlus />
               <span>NEW & POPULAR</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/my-list"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <List />
               <span>MY LIST</span>
             </div>
-          </li>
+          </NavLink>
         </menu>
 
         <div className="flex flex-col gap-2">
           <li className="flex justify-center text-sm">
             <div className="flex items-center gap-4 min-w-[50%]">OTHERS</div>
           </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          <NavLink
+            to={"/playlist"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <List />
               <span>PLAYLIST</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/live"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <Monitor />
               <span>LIVE</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/bookmarks"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <BellPlus />
               <span>BOOKMARKS</span>
             </div>
-          </li>
-          <li className="font-bold w-full text-white py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)]">
+          </NavLink>
+          <NavLink
+            to={"/settings"}
+            className={({ isActive }) => {
+              return `font-bold w-full py-3 flex items-center gap-2 justify-center cursor-pointer hover:bg-[rgba(236,147,147,0.2)] ${
+                isActive
+                  ? "bg-[rgba(236,147,147,0.2)] text-red-500 border-l-4 border-red-400"
+                  : "text-white"
+              }`;
+            }}
+          >
             <div className="flex items-center gap-4 min-w-[50%]">
               <List />
               <span>SETTINGS</span>
             </div>
-          </li>
+          </NavLink>
         </div>
       </div>
     </div>

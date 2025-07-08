@@ -37,6 +37,106 @@
       "password": "abcABC123,"
     }
   ],
-  "channels": [],
-  "messages": []
+  "new-and-trending": [
+    {
+      "id": "1",
+      "title": "The Shawshank Redemption",
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "genre": "Drama",
+      "rating": 9.3,
+      "thumbnail": "https://i.pinimg.com/736x/77/91/99/77919977ed95a41da4c027fbfbdd6a07.jpg",
+      "src": "https://www.youtube.com/embed/6hB3S9bIaco",
+      "trailer": "https://www.youtube.com/embed/6hB3S9bIaco"
+    },
+    {
+      "id": "2",
+      "title": "The Godfather",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "genre": "Crime",
+      "rating": 9.2,
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "src": "https://www.youtube.com/embed/rqGJyUB1Q3s",
+      "trailer": "https://www.youtube.com/embed/rqGJyUB1Q3s"
+    },
+    {
+      "id": "3",
+      "title": "The Dark Knight",
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "genre": "Action",
+      "rating": 9.0,
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+      "src": "https://www.youtube.com/embed/kmJLuwP3MbY",
+      "trailer": "https://www.youtube.com/embed/kmJLuwP3MbY"
+    },
+    {
+      "id": "4",
+      "title": "The Godfather: Part II",
+      "description": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+      "genre": "Crime",
+      "rating": 9.0,
+      "thumbnail": "https://i.pinimg.com/736x/c1/df/bb/c1dfbbb2ecdbdafc2da7546816fa6647.jpg",
+      "src": "",
+      "trailer": ""
+    },
+    {
+      "id": "5",
+      "title": "The Lord of the Rings: The Return of the King",
+      "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+      "genre": "Adventure",
+      "rating": 8.9,
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "src": "https://www.youtube.com/embed/r5X-hFf6Bwo",
+      "trailer": "https://www.youtube.com/embed/r5X-hFf6Bwo"
+    },
+    {
+      "id": "6",
+      "title": "Pulp Fiction",
+      "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+      "genre": "Crime",
+      "rating": 8.9,
+      "thumbnail": "https://i.pinimg.com/originals/d2/cb/5a/d2cb5a9e12dce932869815d9ef0c01c0.gif",
+      "src": "https://www.youtube.com/embed/s7EdQ4FqbhY",
+      "trailer": "https://www.youtube.com/embed/s7EdQ4FqbhY"
+    },
+    {
+      "id": "7",
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+      "genre": "Adventure",
+      "rating": 8.8,
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg",
+      "src": "",
+      "trailer": ""
+    },
+    {
+      "id": "8",
+      "title": "The Lord of the Rings: The Two Towers",
+      "description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
+      "genre": "Adventure",
+      "rating": 8.7,
+      "thumbnail": "https://i.pinimg.com/736x/ce/54/b0/ce54b0ab1ec76b64d312a8ec4ac2c8f1.jpg",
+      "src": "",
+      "trailer": ""
+    },
+    {
+      "id": "9",
+      "title": "The Matrix",
+      "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+      "genre": "Action",
+      "rating": 8.7,
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "src": "https://www.youtube.com/embed/vKQi3bBA1y8",
+      "trailer": "https://www.youtube.com/embed/vKQi3bBA1y8"
+    },
+    {
+      "id": "10",
+      "title": "Forrest Gump",
+      "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
+      "genre": "Drama",
+      "rating": 8.8,
+      "thumbnail": "https://i.pinimg.com/736x/93/6c/2e/936c2ed5124908c862c2b7c2492af511.jpg",
+      "src": "",
+      "trailer": ""
+    }
+  ]
 }

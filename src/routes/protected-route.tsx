@@ -10,12 +10,14 @@ export default function ProtectedRoute({
   const navigate = useNavigate();
   const { getUser, removeUser } = useUser();
 
+  const user = getUser();
+
   useEffect(() => {
-    if (!getUser()) {
+    if (!user) {
       removeUser();
       navigate("/auth/login");
     }
-  }, [getUser, navigate, removeUser]);
+  }, [getUser, navigate, removeUser, user]);
 
   return <div>{children}</div>;
 }
