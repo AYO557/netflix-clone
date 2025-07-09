@@ -50,22 +50,26 @@ function Movie({ name }: { name: string }) {
         </header>
 
         <article className="h-[700px] w-[95%] max-w-[1300px] bg-grey rounded-xl">
-          {movie && (
-            <iframe
-              src={movie.trailer}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="h-full w-full rounded-xl"
-            ></iframe>
-          )}
+          {movie && <MovieBox movie={movie} />}
         </article>
         <Toaster position="top-right" />
       </main>
 
       <Aside name={name} />
     </div>
+  );
+}
+
+function MovieBox({ movie }: { movie: MovieType }) {
+  return (
+    <iframe
+      src={movie.trailer}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="h-full w-full rounded-xl"
+    ></iframe>
   );
 }
 

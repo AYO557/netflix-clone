@@ -33,7 +33,7 @@ function SignupForm() {
       <h2 className="text-2xl font-bold">Create Your NetFlix Account</h2>
 
       <TextField
-        placeholder="Name"
+        placeholder="Enter Full Name"
         name="name"
         type="text"
         value={name}

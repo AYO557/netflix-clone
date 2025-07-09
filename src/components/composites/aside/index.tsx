@@ -1,15 +1,36 @@
 import { Bell, ChevronDown, MapPin } from "lucide-react";
 import SearchField from "../../ui/TextField/search-field";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import useUser from "../../../hooks/useUser";
 
 function Aside({ name }: { name: string }) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // html event function
+
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setIsDropdownOpen(false);
+    });
+  }, []);
+
   return (
     <aside className="col-span-3 h-full border border-grey  py-5 px-10 flex flex-col gap-20 overflow-y-scroll">
       <header className="flex justify-between items-center">
         <div className="h-full flex flex-col gap-20">
-          <div className="flex gap-4 items-center">
+          <div
+            className="relative flex gap-4 items-center hover:text-red-500 cursor-pointer"
+            onClick={(e) => {
+              setIsDropdownOpen(!isDropdownOpen);
+              e.stopPropagation();
+            }}
+          >
             <div className="w-10 h-10 rounded-full bg-gray-600"></div>
-            <h3 className="font-bold">{name} Doe</h3>
+            <h3 className="font-bold">{name || "No Username"}</h3>
             <ChevronDown />
+
+            {isDropdownOpen && <ProfileDropDown />}
           </div>
         </div>
 
@@ -50,7 +71,7 @@ function Aside({ name }: { name: string }) {
               <div className="flex gap-4 items-center">
                 <div className="w-10 h-10 rounded-full bg-gray-600"></div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-bold">{name} Doe</h3>
+                  <h3 className="font-bold">{name}</h3>
                   <p className="text-sm">Hollywood</p>
                 </div>
               </div>
@@ -67,7 +88,7 @@ function Aside({ name }: { name: string }) {
               <div className="flex gap-4 items-center">
                 <div className="w-10 h-10 rounded-full bg-gray-600"></div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-bold">{name} Doe</h3>
+                  <h3 className="font-bold">{name}</h3>
                   <p className="text-sm">Hollywood</p>
                 </div>
               </div>
@@ -84,7 +105,7 @@ function Aside({ name }: { name: string }) {
               <div className="flex gap-4 items-center">
                 <div className="w-10 h-10 rounded-full bg-gray-600"></div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-bold">{name} Doe</h3>
+                  <h3 className="font-bold">{name}</h3>
                   <p className="text-sm">Hollywood</p>
                 </div>
               </div>
@@ -101,7 +122,7 @@ function Aside({ name }: { name: string }) {
               <div className="flex gap-4 items-center">
                 <div className="w-10 h-10 rounded-full bg-gray-600"></div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-bold">{name} Doe</h3>
+                  <h3 className="font-bold">{name}</h3>
                   <p className="text-sm">Hollywood</p>
                 </div>
               </div>
@@ -115,6 +136,30 @@ function Aside({ name }: { name: string }) {
         </div>
       </div>
     </aside>
+  );
+}
+
+function ProfileDropDown() {
+  const navigate = useNavigate();
+  const { removeUser } = useUser();
+
+  const logOut = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    removeUser();
+    navigate("/auth/login");
+  };
+  return (
+    <menu className="absolute w-full bg-grey top-full mt-2 rounded-lg border border-black">
+      <li className="p-2 font-medium border-b border-black cursor-pointer text-white hover:text-red-500 transition-all duration-200">
+        View Profile
+      </li>
+      <li
+        className="p-2 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200"
+        onClick={logOut}
+      >
+        Logout
+      </li>
+    </menu>
   );
 }
 

@@ -7,33 +7,9 @@
       "id": "d320"
     },
     {
-      "id": "3ce9",
-      "name": "Ayo",
-      "email": "olasupoayomide557@gmail.com",
-      "password": "abcABC123,"
-    },
-    {
-      "id": "b6ad",
-      "name": "Uju",
-      "email": "uju_angel@gmail.com",
-      "password": "abcABC123,"
-    },
-    {
-      "id": "49f4",
-      "name": "famous",
-      "email": "famous@gmail.com",
-      "password": "abcABC123,"
-    },
-    {
-      "id": "331e",
-      "name": "Samuel",
-      "email": "samuel@gmail.com",
-      "password": "abcABC123,"
-    },
-    {
-      "id": "cd64",
-      "name": "Divine",
-      "email": "divine@gmail.com",
+      "id": "893b",
+      "name": "Ay Script",
+      "email": "officialayscript@gmail.com",
       "password": "abcABC123,"
     }
   ],
@@ -63,7 +39,7 @@
       "title": "The Dark Knight",
       "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
       "genre": "Action",
-      "rating": 9.0,
+      "rating": 9,
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
       "src": "https://www.youtube.com/embed/kmJLuwP3MbY",
       "trailer": "https://www.youtube.com/embed/kmJLuwP3MbY"
@@ -73,7 +49,7 @@
       "title": "The Godfather: Part II",
       "description": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
       "genre": "Crime",
-      "rating": 9.0,
+      "rating": 9,
       "thumbnail": "https://i.pinimg.com/736x/c1/df/bb/c1dfbbb2ecdbdafc2da7546816fa6647.jpg",
       "src": "",
       "trailer": ""

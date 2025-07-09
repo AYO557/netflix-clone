@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import type { MovieType } from "./libs/types";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { Play } from "lucide-react";
+import { BellPlus, EllipsisVertical, List, Play } from "lucide-react";
 import { Link } from "react-router";
 
 function HomePage({ name }: { name: string }) {
   const [trendingMovies, setTrendingMovies] = useState<null | MovieType[]>(
     null
   );
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -27,6 +28,12 @@ function HomePage({ name }: { name: string }) {
     }
 
     fetchTrendingMovies();
+  }, []);
+
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setIsDropDownOpen(false);
+    });
   }, []);
 
   return (
@@ -61,9 +68,22 @@ function HomePage({ name }: { name: string }) {
                 alt={movie.title}
                 className="w-full h-full object-cover rounded-2xl"
               />
-              <div className="absolute top-0 left-0 rounded-2xl bg-[rgba(255,0,0,0.4)] flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-full w-full">
-                <div className="h-14 w-14 flex justify-center items-center rounded-full bg-red-600">
+              <div className="absolute top-0 left-0 rounded-2xl bg-[rgba(255,0,0,0.4)] flex justify-center items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-full w-full">
+                <div className="size-14 flex justify-center items-center rounded-full bg-red-600">
                   <Play className="h-8 w-8 text-white" />
+                </div>
+
+                <div
+                  className="relative py-4 px-1 flex justify-center items-center hover:bg-[rgba(128,128,128,0.7)] rounded-2xl transition-all duration-200"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsDropDownOpen(!isDropDownOpen);
+                  }}
+                >
+                  <EllipsisVertical />
+
+                  {isDropDownOpen && <MovieDropDown />}
                 </div>
               </div>
             </Link>
@@ -92,6 +112,25 @@ function HomePage({ name }: { name: string }) {
       </section>
       <Toaster position="top-right" />
     </>
+  );
+}
+
+function MovieDropDown() {
+  return (
+    <menu
+      className="absolute bg-[rgba(128,128,128,0.7)] left-full top-4 ml-2 rounded-lg z-50"
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+    >
+      <li className="p-3 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200">
+        <List />
+      </li>
+      <li className="p-3 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200">
+        <BellPlus />
+      </li>
+    </menu>
   );
 }
 
