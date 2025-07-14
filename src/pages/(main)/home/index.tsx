@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { MovieType } from "./libs/types";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { BellPlus, EllipsisVertical, List, Play } from "lucide-react";
 import { Link } from "react-router";
+import { PlaylistContext } from "../../../contexts/playlist";
 
 function HomePage({ name }: { name: string }) {
   const [trendingMovies, setTrendingMovies] = useState<null | MovieType[]>(
     null
   );
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  // dispatch({type: "ADD_MOVIE", payload: {id: "1"} })
+  //! state: is our data used in our JSX
+  //! dispatch: is a function that we use to update the state (analogy: Like our sword)
+  //! reducer: is a function that takes the current state and an action and returns the new state, it is representation of how our dispatch will function (analogy: like our blacksmith)
+  //! initialArg: is the initial value of the state
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -116,6 +122,7 @@ function HomePage({ name }: { name: string }) {
 }
 
 function MovieDropDown() {
+  const { dispatch } = useContext(PlaylistContext);
   return (
     <menu
       className="absolute bg-[rgba(128,128,128,0.7)] left-full top-4 ml-2 rounded-lg z-50"
@@ -124,7 +131,27 @@ function MovieDropDown() {
         e.preventDefault();
       }}
     >
-      <li className="p-3 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200">
+      <li
+        className="p-3 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200"
+        onClick={() => {
+          console.log("running");
+          dispatch({
+            type: "ADD_MOVIE",
+            payload: {
+              id: "1",
+              title: "Movie 1",
+              description: "Movie 1 description",
+              genre: "Action",
+              rating: 5,
+              trailer:
+                "https://i.pinimg.com/736x/77/91/99/77919977ed95a41da4c027fbfbdd6a07.jpg",
+              thumbnail:
+                "https://i.pinimg.com/736x/77/91/99/77919977ed95a41da4c027fbfbdd6a07.jpg",
+              src: "https://www.w3schools.com/html/mov_bbb.mp4",
+            },
+          });
+        }}
+      >
         <List />
       </li>
       <li className="p-3 font-medium cursor-pointer text-white hover:text-red-500 transition-all duration-200">

@@ -7,6 +7,8 @@ import MainLayout from "../pages/(main)";
 import HomePage from "../pages/(main)/home";
 import useUser from "../hooks/useUser";
 import Movie from "../pages/(main)/movie";
+import Playlists from "../pages/(main)/playlist";
+import PlaylistWrapper from "../contexts/playlist";
 
 export default function Router() {
   const { getUser } = useUser();
@@ -54,7 +56,7 @@ export default function Router() {
         },
         {
           path: "playlist",
-          element: <ProtectedRoute children={<h1>Playlists</h1>} />,
+          element: <ProtectedRoute children={<Playlists />} />,
         },
         {
           path: "live",
